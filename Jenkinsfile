@@ -73,6 +73,9 @@ pipeline {
         }
 
         stage('Deploy in k8s prd') {
+            when {
+                branch 'teste'
+            }
             steps {
                 input 'Do you approve deployment?'
                 sh "sed -i 's/TAG_IMAGE/'${env.BUILD_ID}'/g' k8s/deploy.yaml"
@@ -87,6 +90,9 @@ pipeline {
         }
 
         stage('Destroy prd') {
+            when {
+                branch 'teste'
+            }
             steps {
                 input 'Do you approve deployment?'
                 sh "sed -i 's/TAG_IMAGE/'${env.BUILD_ID}'/g' k8s/deploy.yaml"
