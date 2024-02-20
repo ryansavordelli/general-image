@@ -1,12 +1,36 @@
-apiVersion: v1
-kind: deploy
+#apiVersion: v1
+#kind: deploy
+#metadata:
+#  name: general-HOST_POD
+#spec:
+#  containers:
+#  - name: general-HOST_POD
+#    image: ryansavordelli/general-image:TAG_IMAGE
+#    command: ["/bin/sh", "-c"]
+#    args: ["while true; do echo 'Container is running...'; sleep 10; done"]    
+#    ports:
+#    - containerPort: 80
+
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: general-HOST_POD
+  labels:
+    app: general
 spec:
-  containers:
-  - name: general-HOST_POD
-    image: ryansavordelli/general-image:TAG_IMAGE
-    command: ["/bin/sh", "-c"]
-    args: ["while true; do echo 'Container is running...'; sleep 10; done"]    
-    ports:
-    - containerPort: 80
+  replicas: 2
+  selector:
+    matchLabels:
+      app: general
+  template:
+    metadata:
+      labels:
+        app: general
+    spec:
+      containers:
+      - name: general-HOST_POD
+        image: ryansavordelli/general-image:TAG_IMAGE
+        command: ["/bin/sh", "-c"]
+        args: ["while true; do echo 'Container is running...'; sleep 10; done"]
+        ports:
+        - containerPort: 80
