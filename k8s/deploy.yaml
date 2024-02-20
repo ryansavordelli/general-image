@@ -6,5 +6,7 @@ spec:
   containers:
   - name: nginx-HOST_POD
     image: ryansavordelli/general-image:TAG_IMAGE
+    command: ["/bin/sh", "-c"]
+    args: ["while true; do echo 'Container is running...'; sleep 10; done"]    
     ports:
     - containerPort: 80
