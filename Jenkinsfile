@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Get Source') {
             steps {
-                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'main'
+                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
             }
         }
 
