@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y htop
 
-COPY src/resources/base.sh /app/base.sh
+COPY --chmod=755 src/resources/base.sh /app/base.sh
 RUN /app/base.sh
 
 
