@@ -73,7 +73,7 @@ pipeline {
                 sh 'chmod 0755 k8s/config.sh'
                 sh '''#!/bin/bash
                       source k8s/config.sh
-                      export ENV_DEPLOY='outro'
+                      export ENV_DEPLOY='prd'
                       configDeploy
                    '''
                 sh 'kubectl apply -f k8s/deploy.yaml'
@@ -86,7 +86,7 @@ pipeline {
                 sh "sed -i 's/TAG_IMAGE/'${env.BUILD_ID}'/g' k8s/deploy.yaml"
                 sh '''#!/bin/bash
                       source k8s/config.sh
-                      export ENV_DEPLOY='outro'
+                      export ENV_DEPLOY='prd'
                       configDeploy
                    '''
                 sh 'kubectl delete -f k8s/deploy.yaml'
