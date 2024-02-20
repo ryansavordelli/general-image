@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         HOST_POD = 'test-pod'
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
     }
 
 
@@ -41,7 +42,7 @@ pipeline {
 
         stage('Deploy in k8s dev') {
             when {
-                branch 'dev'
+                environment name: 'BRANCH_NAME', value: 'dev'
             }
             steps {
                 input 'Do you approve deployment?'
@@ -58,7 +59,7 @@ pipeline {
 
         stage('Destroy dev') {
             when {
-                branch 'dev'
+                environment name: 'BRANCH_NAME', value: 'dev'
             }
             steps {
                 input 'Do you approve deployment?'
@@ -80,7 +81,7 @@ pipeline {
 
         stage('Deploy in k8s prd') {
             when {
-                branch 'master'
+                environment name: 'BRANCH_NAME', value: 'master'
             }
             steps {
                 input 'Do you approve deployment?'
@@ -97,7 +98,7 @@ pipeline {
 
         stage('Destroy prd') {
             when {
-                branch 'master'
+                environment name: 'BRANCH_NAME', value: 'master'
             }
             steps {
                 input 'Do you approve deployment?'
