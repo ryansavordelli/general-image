@@ -6,7 +6,7 @@ pipeline {
     }
 
 
-//    stages {
+    stages {
 //       stage('Get Source Build and Dev') {
 //            steps {
 //                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
