@@ -7,7 +7,7 @@ pipeline {
 
 
     stages {
-        stage('Get Source') {
+        stage('Get Source Build and Dev') {
             steps {
                 git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
             }
@@ -65,7 +65,13 @@ pipeline {
                 sh 'kubectl delete -f k8s/deploy.yaml'
             }
         }
-    
+
+        stage('Get Source PRD') {
+            steps {
+                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
+            }
+        }
+
         stage('Deploy in k8s prd') {
             steps {
                 input 'Do you approve deployment?'
