@@ -6,12 +6,12 @@ pipeline {
     }
 
 
-    stages {
-        stage('Get Source Build and Dev') {
-            steps {
-                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
-            }
-        }
+//    stages {
+//       stage('Get Source Build and Dev') {
+//            steps {
+//                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
+//            }
+//        }
 
         stage('Docker Build') {
             steps {
