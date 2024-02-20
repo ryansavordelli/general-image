@@ -66,11 +66,11 @@ pipeline {
             }
         }
 
-//        stage('Get Source PRD') {
-//            steps {
-//                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
-//            }
-//        }
+        stage('Get Source PRD') {
+            steps {
+                git url: 'https://github.com/ryansavordelli/general-image.git', branch: 'master'
+            }
+        }
 
         stage('Deploy in k8s prd') {
             steps {
